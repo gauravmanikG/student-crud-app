@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Student Form</title></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 500px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #007bff;
+        }
+    </style>
+</head>
 <body>
 <h1 th:text="${student.id == null} ? 'Add Student' : 'Edit Student'"></h1>
 <form th:action="@{/students/save}" th:object="${student}" method="post">
-<input type="hidden" th:field="*{id}"/>
-<label>Name:</label><input type="text" th:field="*{name}"/><br/>
-<label>Email:</label><input type="text" th:field="*{email}"/><br/>
-<label>Course:</label><input type="text" th:field="*{course}"/><br/>
-<button type="submit">Save</button>
+    <input type="hidden" th:field="*{id}"/>
+    <label>Name:</label>
+    <input type="text" th:field="*{name}"/>
+    <label>Email:</label>
+    <input type="text" th:field="*{email}"/>
+    <label>Course:</label>
+    <input type="text" th:field="*{course}"/>
+    <button type="submit">Save</button>
 </form>
 <a th:href="@{/students}">Back to List</a>
-</body></html>
+</body>
+</html>
